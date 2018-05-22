@@ -16,11 +16,16 @@
 
 	<div id="example"></div>
 
+	<div id="container"></div>
+	</br>
+	</br>
+	</br>
+
 	<div id="footer"></div>
 
+	
+
 	<script type="text/babel">
-
-
 {/* handling state */}
 		var Checkbox = React.createClass({
 			
@@ -99,6 +104,47 @@
 			}
 		});
 
+		var Comment = React.createClass({
+			getInitialState: function () {
+				return {editing: false}
+			},
+			edit: function (){
+				this.setState({editing: true});
+			},
+			remove: function () {
+				console.log('removing')
+			},
+			save: function () {
+				this.setState({editing: false});
+			},
+			renderNormal: function () {
+				return (
+					<div>
+						<h2>{this.props.children}</h2>
+						<button onClick={this.edit} className="button-primary">Edit</button>
+						<button onClick={this.remove} className="button-danger">Remove</button>
+					</div>
+				);
+			},
+			renderForm: function () {
+				return (
+					<div>
+						<textarea defaultValue={this.props.children}></textarea>
+						<button onClick={this.save} className="button-success">Save</button>
+					</div>
+				);
+			},
+			render: function () {
+				if(this.state.editing){
+					return this.renderForm();
+				}else{
+					return this.renderNormal();
+				};
+			}
+		});
+
+
+
 		ReactDOM.render(
 		<div>
 			<Bacon title="Mmmm...bacon" genre="bacony goodness" />
@@ -117,6 +163,13 @@
 		<div>
 			<Footer />
 		</div>, document.getElementById('footer'));
+
+		ReactDOM.render(
+		<div>
+			<Comment>This is comment 1</Comment>
+			<Comment>This is comment 2</Comment>
+			<Comment>This is comment 3</Comment>
+		</div>, document.getElementById('container'));
 
 
 
