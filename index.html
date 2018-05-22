@@ -20,8 +20,10 @@
 
 	<script type="text/babel">
 
-		var Checkbox = React.createClass({
 
+{/* handling state */}
+		var Checkbox = React.createClass({
+			
 			getInitialState: function () {
 				return {checked: true}
 			},
@@ -30,22 +32,23 @@
 				this.setState({checked: !this.state.checked})
 			},
 
-			render: function () {
-					var msg;
-					if(this.state.checked){
-						msg = 'checked'
-					}else{
-						msg = 'unchecked'
-					}
+			render: function (){
+				var msg ;
+				if(this.state.checked){
+					msg='checked'
+				}else{
+					msg = 'unchecked'
+				}
 				return (
 					<div>
 						<input type="checkbox" onChange={this.handleChecked} defaultChecked={this.state.checked} />
-						<h2>This checkbox is {msg}</h2>
+						<h1>This checkbox is {msg}</h1>	
 					</div>
 				);
 			}
 		});
 
+{/* event handliing */}
 		var Header = React.createClass({
 			edit: function(){
 				alert("Edit!");
@@ -56,6 +59,7 @@
 			render: function(){
 				return(
 					<div>
+				{/* this.props.children allows you to put text between custom tags <Header>Header 1</Header> */}
 						<h1>{this.props.children}</h1>
 						<button onClick={this.edit} >Edit</button>
 						<button onClick={this.remove}>Remove</button>
@@ -72,7 +76,7 @@
 			}
 		});
 
-
+{/* handling properties */}
 		var Bacon = React.createClass({
 			render: function () {
 				return (
@@ -88,6 +92,7 @@
 			render: function(){
 				return (
 					<div>
+				{/* className instead of class */}
 						<p className="center">Made with love by Kevin Huelsmann &copy; 2018</p>
 					</div>
 				);
