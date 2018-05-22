@@ -2,9 +2,11 @@ body{
 	/*background: red;*/
 }
 #footer{
-	position: fixed;
-	bottom: 0;
+	/*position: fixed;*/
+	/*bottom: 0;*/
 	width: 100%;
+	border-top: 2px solid black;
+	background: red;
 }
 .center{
 	text-align: center;
